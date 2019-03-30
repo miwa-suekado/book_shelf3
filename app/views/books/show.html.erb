@@ -1,0 +1,41 @@
+  <div class="col-md-10 offset-md-1 mt-5">
+  <div class="row">
+    <div class="col-md-4 mb-4">
+    <%= show_book_image @book %>
+    </div>
+    <div class="col-md-8">
+      <h2><%= @book.title %></h2>
+      <ul>
+        <li><b><%= t ".price" %>: </b><%= t(".price_yen", price: (number_with_delimiter @book.price)) %></li>
+        <li><b><%= t ".publish_date" %>: </b><%= @book.publish_date %></li>
+        <li><b><%= t ".category" %>: </b><%= @book.category&.name %></li>
+      </ul>
+    </div>
+  </div>
+  <hr>
+  <h4><%= t ".description" %></h4>
+  <%= simple_format @book.description %>
+  <%= link_to t(".edit"), edit_book_path(@book), class: "btn btn-primary" %>
+  <%= button_tag t(".delete"), class: "btn btn-warning", data: { toggle: "modal", target: "#delete-book" } %>
+  <%= link_to t(".return"), books_path, class: "btn btn-secondary" %>
+</div>
+
+<div class="modal fade" id="delete-book">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><%= t(".modal_title") %></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p><%= t(".question_book", book: @book.title) %></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"><%= t(".chancel") %></button>
+        <%= link_to t(".delete_action"), book_path(@book), method: :delete, class: "btn btn-danger" %>
+      </div>
+    </div>
+  </div>
+</div>

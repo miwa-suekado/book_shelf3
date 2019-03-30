@@ -1,0 +1,10 @@
+  ja:
+    shared:
+      header:
+        title: BookShelf
+        home: Home
+        new_book: New Book
+        new_registration: 新規登録
+        edit_registration: 設定変更
+        log_out: ログアウト
+        log_in: ログイン

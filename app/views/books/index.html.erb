@@ -1,0 +1,11 @@
+<% @books.each do |book| %>
+  <div class="col-md-3 col-sm-6 mb-3">
+    <%= show_book_image book %>
+    <h4 class="mt-2"><%= link_to book.title, book_path(book) %></h4>
+    <div><%= t(".price_yen", price: (number_with_delimiter book.price)) %></div>
+    <p><%= truncate(book.description, length: 20) %></p>
+  </div>
+<% end %>
+  <div class="col-12">
+    <%= paginate @books %>
+  </div>
